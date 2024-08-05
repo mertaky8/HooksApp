@@ -1,5 +1,6 @@
 import useFetch from "./hooks/useFetch";
 import React from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 interface Todo {
   userId: number;
@@ -40,6 +41,8 @@ function App() {
     "https://jsonplaceholder.typicode.com/users"
   );
 
+  const [name, setName] = useLocalStorage("name");
+
   return (
     <React.Fragment>
       <h1>React - Hooks</h1>
@@ -52,6 +55,14 @@ function App() {
       {!!userError && userError}
       {isUserLoading && "Yükleniyor"}
       {!isUserLoading && !userError && <div>{JSON.stringify(user)}</div>}
+      <h1>LocalStorage Example</h1>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)} // Değeri güncelle
+        placeholder="Your name"
+      />
+      <p>Stored name: {name}</p>
     </React.Fragment>
   );
 }
