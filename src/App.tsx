@@ -34,8 +34,8 @@ interface User {
 }
 
 function App() {
-  const [todo, isTodoLoading, todoError] = useFetch<Todo>(
-    "https://jsonplaceholder.typicode.com/todos/1"
+  const [todo, isTodoLoading, todoError] = useFetch<Todo[]>(
+    "https://jsonplaceholder.typicode.com/todos"
   );
   const [user, isUserLoading, userError] = useFetch<User[]>(
     "https://jsonplaceholder.typicode.com/users"
